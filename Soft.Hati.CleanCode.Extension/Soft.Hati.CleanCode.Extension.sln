@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.22823.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Hati.CleanCode.Extension", "Soft.Hati.CleanCode.Extension\Soft.Hati.CleanCode.Extension\Soft.Hati.CleanCode.Extension.csproj", "{4FF547A3-F9DD-4430-A4DC-1CA851A632D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Hati.CleanCode.Extension.Test", "Soft.Hati.CleanCode.Extension\Soft.Hati.CleanCode.Extension.Test\Soft.Hati.CleanCode.Extension.Test.csproj", "{0316A5E6-EDAA-42DD-BEA8-F59DD0E7D5E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Hati.CleanCode.Extension.Vsix", "Soft.Hati.CleanCode.Extension\Soft.Hati.CleanCode.Extension.Vsix\Soft.Hati.CleanCode.Extension.Vsix.csproj", "{50DE0549-32AB-4501-87D2-A20EDC4FAF37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Hati.CleanCode.Metrics", "Soft.Hati.CleanCode.Metrics\Soft.Hati.CleanCode.Metrics.csproj", "{FB234ABA-21EC-4019-BD9A-620CE320C7EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4FF547A3-F9DD-4430-A4DC-1CA851A632D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FF547A3-F9DD-4430-A4DC-1CA851A632D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FF547A3-F9DD-4430-A4DC-1CA851A632D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FF547A3-F9DD-4430-A4DC-1CA851A632D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0316A5E6-EDAA-42DD-BEA8-F59DD0E7D5E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0316A5E6-EDAA-42DD-BEA8-F59DD0E7D5E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0316A5E6-EDAA-42DD-BEA8-F59DD0E7D5E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0316A5E6-EDAA-42DD-BEA8-F59DD0E7D5E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50DE0549-32AB-4501-87D2-A20EDC4FAF37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50DE0549-32AB-4501-87D2-A20EDC4FAF37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50DE0549-32AB-4501-87D2-A20EDC4FAF37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50DE0549-32AB-4501-87D2-A20EDC4FAF37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB234ABA-21EC-4019-BD9A-620CE320C7EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB234ABA-21EC-4019-BD9A-620CE320C7EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB234ABA-21EC-4019-BD9A-620CE320C7EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB234ABA-21EC-4019-BD9A-620CE320C7EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
