@@ -3,6 +3,28 @@ using Newtonsoft.Json;
 
 namespace CleanCode.Helpers.Configuration
 {
+
+    [JsonObject(MemberSerialization.OptIn)]
+    internal class SettingsFile
+    {
+        [JsonProperty("settings", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        private ISettings settings;
+
+        [JsonConstructor]
+        protected SettingsFile()
+        {
+            this.settings = new Settings();
+        }
+
+        public ISettings Settings
+        {
+            get
+            {
+                return settings;
+            }
+        }
+    }
+
     public interface ISettingsBase
     {
     }
