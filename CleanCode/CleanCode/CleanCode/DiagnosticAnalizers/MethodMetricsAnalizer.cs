@@ -6,6 +6,8 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Diagnostics;
 using ArchiMetrics.Analysis;
 using CleanCode;
+using CleanCode.Helpers.Configuration;
+using System;
 
 namespace CleanCode.DiagnosticAnalizers
 {
@@ -47,39 +49,40 @@ namespace CleanCode.DiagnosticAnalizers
             var metricsCalculator = new CodeMetricsCalculator();
             var metrics = await metricsCalculator.Calculate(new List<SyntaxTree> { CSharpSyntaxTree.ParseText(obj.CodeBlock.ToString()) });
             var functionMetric = metrics.ElementAt(0).TypeMetrics.ElementAt(0).MemberMetrics.ElementAt(0);
-            CheckComplexity(obj, functionMetric.CyclomaticComplexity);
-            CheckNumberOfParameters(obj, functionMetric.NumberOfParameters);
-            CheckLinesOfCode(obj, functionMetric.LinesOfCode);
+            var settings = new SettingsHelper();
+            CheckComplexity(obj, functionMetric.CyclomaticComplexity, settings.Settings.MethodSettings);
+            CheckNumberOfParameters(obj, functionMetric.NumberOfParameters, settings.Settings.MethodSettings);
+            CheckLinesOfCode(obj, functionMetric.LinesOfCode, settings.Settings.MethodSettings);
         }
 
-        void CheckComplexity(CodeBlockAnalysisContext obj, int cyclomaticComplexity)
-        {
-            if (cyclomaticComplexity > 3)
-            {
-                var diagnostic = Diagnostic.Create(ComplexityRule, obj.CodeBlock.GetLocation(), new object[]{ "Cyclomatic Complexity", 3});
 
-                obj.ReportDiagnostic(diagnostic);
-            }
+        protected void CheckComplexity(CodeBlockAnalysisContext obj, int cyclomaticComplexity, IMethodSettings methodSettings)
+        {
+            if (cyclomaticComplexity < 10)
+                return;
+
+            var diagnostic = Diagnostic.Create(ComplexityRule, obj.CodeBlock.GetLocation(), new object[]{ "Cyclomatic Complexity", 10});
+            obj.ReportDiagnostic(diagnostic);
+
         }
 
-        void CheckNumberOfParameters(CodeBlockAnalysisContext obj, int numberOfParameters)
+        protected void CheckNumberOfParameters(CodeBlockAnalysisContext obj, int numberOfParameters, IMethodSettings methodSettings)
         {
-            if (numberOfParameters > 3)
-            {
-                var diagnostic = Diagnostic.Create(ParametersRule, obj.CodeBlock.GetLocation(), new object[] { "Number Of Parameters", 3 });
+            if (numberOfParameters < 4)
+                return;
 
-                obj.ReportDiagnostic(diagnostic);
-            }
+            var diagnostic = Diagnostic.Create(ParametersRule, obj.CodeBlock.GetLocation(), new object[] { "Number Of Parameters", 3 });
+            obj.ReportDiagnostic(diagnostic);
         }
 
-        void CheckLinesOfCode(CodeBlockAnalysisContext obj, int linesOfCode)
+        protected void CheckLinesOfCode(CodeBlockAnalysisContext obj, int linesOfCode, IMethodSettings methodSettings)
         {
-            if (linesOfCode > 20)
-            {
-                var diagnostic = Diagnostic.Create(LinesRule, obj.CodeBlock.GetLocation(), new object[] { "Lines Of Code", 10 });
+            if (linesOfCode < 20)
+                return;
 
-                obj.ReportDiagnostic(diagnostic);
-            }
+            var diagnostic = Diagnostic.Create(LinesRule, obj.CodeBlock.GetLocation(), new object[] { "Lines Of Code", 20 });
+            obj.ReportDiagnostic(diagnostic);
+
         }
     }
 }
