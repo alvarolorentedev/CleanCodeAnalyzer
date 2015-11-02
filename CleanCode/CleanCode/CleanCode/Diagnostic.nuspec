@@ -4,8 +4,8 @@
     <id>CleanCode</id>
     <version>1.0.0.0</version>
     <title>CleanCode</title>
-    <authors>alvar</authors>
-    <owners>alvar</owners>
+    <authors>HatiSoftware</authors>
+    <owners>Hati Software</owners>
     <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
     <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
     <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>
@@ -19,6 +19,7 @@
   <files>
     <file src="*.dll" target="analyzers\dotnet\cs" exclude="**\Microsoft.CodeAnalysis.*;**\System.Collections.Immutable.*;**\System.Reflection.Metadata.*;**\System.Composition.*" />
     <file src="tools\*.ps1" target="tools\" />
-    <file src="Helpers\Configuration\Files\*.json" target="tools\settings\" />
+    
+    <file src="Helpers\Configuration\Files\*.json" target="content\" />
   </files>
 </package>

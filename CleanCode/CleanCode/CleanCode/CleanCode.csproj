@@ -57,6 +57,7 @@
     <None Include="Helpers\Configuration\Files\CleanCode.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Helpers\Configuration\Files\CleanCode.targets" />
     <None Include="packages.config" />
     <None Include="tools\install.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

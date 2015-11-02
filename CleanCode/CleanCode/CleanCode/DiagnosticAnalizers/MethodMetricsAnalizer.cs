@@ -49,10 +49,11 @@ namespace CleanCode.DiagnosticAnalizers
             var metricsCalculator = new CodeMetricsCalculator();
             var metrics = await metricsCalculator.Calculate(new List<SyntaxTree> { CSharpSyntaxTree.ParseText(obj.CodeBlock.ToString()) });
             var functionMetric = metrics.ElementAt(0).TypeMetrics.ElementAt(0).MemberMetrics.ElementAt(0);
-            var settings = new SettingsHelper();
-            CheckComplexity(obj, functionMetric.CyclomaticComplexity, settings.Settings.MethodSettings);
-            CheckNumberOfParameters(obj, functionMetric.NumberOfParameters, settings.Settings.MethodSettings);
-            CheckLinesOfCode(obj, functionMetric.LinesOfCode, settings.Settings.MethodSettings);
+            //var settings = SettingsHelper.GetSettings(obj.Options);
+            var settings = new Settings();
+            CheckComplexity(obj, functionMetric.CyclomaticComplexity, settings.MethodSettings);
+            CheckNumberOfParameters(obj, functionMetric.NumberOfParameters, settings.MethodSettings);
+            CheckLinesOfCode(obj, functionMetric.LinesOfCode, settings.MethodSettings);
         }
 
 

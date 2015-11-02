@@ -13,29 +13,48 @@ namespace CleanCode.Helpers.Configuration
 {
     interface ISettingsHelper
     {
-        ISettings Settings { get; }
+        //ISettings Settings { get; }
     }
 
-    class SettingsHelper : ISettingsHelper 
+    internal static class SettingsHelper 
     {
 
         private const string SettingsFileName = "CleanCode.json";
 
-        public ISettings Settings { get { return settings ?? GetSettings(); } }
+        //public ISettings Settings { get { return settings ?? GetSettings(); } }
 
-        private ISettings settings;
+        //private ISettings settings;
 
-        private static ISettings GetSettings()
+        internal static ISettings GetSettings(this SyntaxTreeAnalysisContext context)
+        {
+            return context.Options.GetSettings();
+        }
+        internal static ISettings GetSettings(this AnalyzerOptions options)
+        {
+            return GetSettings(options != null ? options.AdditionalFiles : ImmutableArray.Create<AdditionalText>());
+        }
+
+
+        private static ISettings GetSettings(ImmutableArray<AdditionalText> additionalFiles)
         {
             try
             {
-                var root = JsonConvert.DeserializeObject<SettingsFile>(SettingsFileName);
-                return root.Settings;
+                foreach (var additionalFile in additionalFiles)
+                {
+                    if (Path.GetFileName(additionalFile.Path).ToLowerInvariant() == SettingsFileName)
+                    {
+                        var root = JsonConvert.DeserializeObject<SettingsFile>(additionalFile.GetText().ToString());
+                        return root.Settings;
+                    }
+                }
+                //var root = JsonConvert.DeserializeObject<SettingsFile>((Path.GetFileName(SettingsFileName));
+                //return root.Settings;
             }
-            catch (JsonException)
+            catch (JsonException ex)
             {
-                return new Settings();
+                
             }
+            return new Settings();
         }
     }
 }
