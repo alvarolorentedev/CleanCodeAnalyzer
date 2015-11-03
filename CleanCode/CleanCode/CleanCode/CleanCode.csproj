@@ -34,6 +34,7 @@
   <ItemGroup>
     <Compile Include="CodeFixes\CodeFixProvider.cs" />
     <Compile Include="DiagnosticAnalizers\MethodMetricsAnalizer.cs" />
+    <Compile Include="DiagnosticAnalizers\NamingAnalizer.cs" />
     <Compile Include="Helpers\Configuration\Settings.cs" />
     <Compile Include="Helpers\Configuration\SettingsHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
